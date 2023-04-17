@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/navbar/navbar'
 import ClientOnly from './components/client-only'
 import RegisterModal from './components/modals/register-modal'
+import ToasterProvider from './providers/toaster-provider'
 
 export const metadata = {
   title: 'Airbmb',
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
+          <ToasterProvider />
           <RegisterModal />
           <Navbar />
         </ClientOnly>

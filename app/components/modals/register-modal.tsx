@@ -12,6 +12,8 @@ import {
     useForm
 } from 'react-hook-form'
 
+import {toast} from 'react-hot-toast'
+
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './modal'
 import Heading from '../heading'
@@ -43,7 +45,7 @@ function RegisterModal() {
                 registerModal.onClose()
             })
             .catch(err => {
-                console.log(err)
+                toast.error(err.message)
             })
             .finally(() => {
                 setIsLoading(false)
