@@ -21,7 +21,7 @@ body,
 }
 
 /* SCROLLBAR */
-
+@media only screen and (min-width: 600px) {
 *::-webkit-scrollbar {
     width: 8px;
 }
@@ -36,58 +36,4 @@ body,
     border-radius: 14px;
     border: 1px solid #d6d6d6;
 }
-
-
-/* LOADER */
-
-@layer components {
-
-    .loader {
-        display: block;
-        width: 48px;
-        height: 48px;
-        left: calc(50vw - 24px);
-        top: 10px;
-        border-radius: 50%;
-        position: relative;
-        animation: rotate 1s linear 20
-    }
-
-    .loader::before {
-        content: "";
-        box-sizing: border-box;
-        position: absolute;
-        inset: 0px;
-        border-radius: 50%;
-        border: 5px solid rgb(254 113 117);
-        animation: prixClipFix 2s linear infinite;
-    }
-
-    @keyframes rotate {
-        100% {
-            transform: rotate(360deg)
-        }
-    }
-
-    @keyframes prixClipFix {
-        0% {
-            clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
-        }
-
-        25% {
-            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
-        }
-
-        50% {
-            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
-        }
-
-        75% {
-            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
-        }
-
-        100% {
-            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
-        }
-    }
 }
