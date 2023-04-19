@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +9,15 @@ html,
 body,
 :root {
     height: 100%;
+}
+
+/* MAP (leaflet lib)*/
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top{
+    z-index: 0 !important;
 }
 
 /* SCROLLBAR */
@@ -25,13 +35,13 @@ body,
     background-color: #e3e3e3;
     border-radius: 14px;
     border: 1px solid #d6d6d6;
-    ;
 }
 
 
 /* LOADER */
 
 @layer components {
+
     .loader {
         display: block;
         width: 48px;
