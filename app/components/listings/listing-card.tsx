@@ -8,7 +8,10 @@ import useCountries from "@/app/hooks/useCountries"
 import { SafeUser } from "@/app/types"
 import { Listing, Reservation } from "@prisma/client"
 
+import HeartButton from "../heart-button"
+
 import { format } from 'date-fns'
+import Button from "../button"
 
 interface ListingCardProps {
     data: Listing
@@ -65,7 +68,35 @@ const ListingCard: React.FC<ListingCardProps> = ({
                     src={data.imageSrc}
                     className="object-cover h-full w-full group-hover:scale-100 transition"
                 />
+                <div className="absolute top-3 right-3">
+                    <HeartButton
+                        listingId={data.id}
+                        currentUser={currentUser}
+                    />
+                </div>
             </div>
+            <div className="font-semibold text-lg">
+                {location?.region}, {location?.label}
+            </div>
+            <div className="font-light text-neutral-500">
+                {reservationDate || data.category}
+            </div>
+            <div className="flex flex-row items-center gap-1">
+                <div className="font-semibold">
+                    $ {price}
+                </div>
+                {!reservation && (
+                    <div className="font-light">night</div>
+                )}
+            </div>
+            {onAction && actionLabel && (
+                <Button
+                    disabled={disabled}
+                    small
+                    label={actionLabel}
+                    onClick={handleCancel}
+                />
+            )}
         </div>
     </div>
 }
