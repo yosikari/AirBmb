@@ -14,7 +14,6 @@ interface IUseFavorite {
 
 const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
   const router = useRouter()
-
   const loginModal = useLoginModal()
 
   const hasFavorited = useMemo(() => {
@@ -34,25 +33,26 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
       let request
 
       if (hasFavorited) {
-        request = () => axios.delete(`/api/favorites/${listingId}`)
+        request = axios.delete
       } else {
-        request = () => axios.post(`/api/favorites/${listingId}`)
+        request = axios.post
       }
 
-      await request()
+      await request(`/api/favorites/${listingId}`)
       router.refresh()
-      toast.success(hasFavorited?'Added to favorite':'Removed from favorite')
+      toast.success(hasFavorited ?'Removed from favorite':'Added to favorite')
     } catch (error) {
+      console.log(error)
       toast.error('Something went wrong.')
     }
-  }, 
-  [
-    currentUser, 
-    hasFavorited, 
-    listingId, 
-    loginModal,
-    router
-  ]);
+  },
+    [
+      currentUser,
+      hasFavorited,
+      listingId,
+      loginModal,
+      router
+    ]);
 
   return {
     hasFavorited,

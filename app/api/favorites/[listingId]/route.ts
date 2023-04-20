@@ -12,7 +12,6 @@ export async function POST(
   { params }: { params: IParams }
 ) {
   const currentUser = await getCurrentUser()
-
   if (!currentUser) {
     return NextResponse.error()
   }
