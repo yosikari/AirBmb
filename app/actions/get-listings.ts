@@ -4,11 +4,16 @@ export default async function getListings() {
   try {
     const listings = await prisma.listing.findMany({
       orderBy: {
-        cratedAt:'desc'
+        cratedAt: 'desc'
       }
     })
 
-    return listings;
+    const safeListings = listings.map((listing) => ({
+      ...listing,
+      cratedAt: listing.cratedAt.toISOString()
+    }))
+
+    return safeListings
   } catch (error: any) {
     throw new Error(error);
   }
