@@ -8,7 +8,7 @@ import { IconType } from "react-icons"
 import qs from 'query-string'
 
 interface CategoryBoxProps {
-    label: String
+    label: string
     icon: IconType
     selected?: boolean
 }

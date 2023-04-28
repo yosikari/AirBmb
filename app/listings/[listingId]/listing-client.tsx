@@ -11,10 +11,8 @@ import { eachDayOfInterval, differenceInCalendarDays } from "date-fns"
 
 import useLoginModal from "@/app/hooks/useLoginModal"
 
-import { SafeUser, safeListing } from "@/app/types"
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types"
 import { Range } from "react-date-range"
-
-import { Reservation } from "@prisma/client"
 
 import Container from "@/app/components/container"
 import { categories } from "@/app/components/navbar/categories"
@@ -30,8 +28,8 @@ const initialDateRange = {
 
 
 interface ListingClientProps {
-    reservations?: Reservation[]
-    listing: safeListing & {
+    reservations?: SafeReservation[]
+    listing: SafeListing & {
         user: SafeUser
     }
     currentUser?: SafeUser | null
