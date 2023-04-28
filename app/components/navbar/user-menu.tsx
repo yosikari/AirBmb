@@ -2,6 +2,8 @@
 
 import { useCallback, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 import { AiOutlineMenu } from 'react-icons/ai'
 
 import Avatar from '../avatar'
@@ -24,6 +26,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const loginModal = useLoginModal()
     const rentModal = useRentModal()
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
@@ -57,7 +60,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 {currentUser ?
                     <>
                         <MenuItem
-                            onClick={() => { }}
+                            onClick={() => router.push('/trips')}
                             label='My trips'
                         />
                         <MenuItem
