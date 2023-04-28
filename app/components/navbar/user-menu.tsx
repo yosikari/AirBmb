@@ -79,7 +79,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         />
                         <MenuItem
                             onClick={() => {
-
+                                router.push('/properties')
                                 toggleOpen()
                             }}
                             label='My properties'
